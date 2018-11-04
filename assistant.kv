@@ -1,0 +1,60 @@
+#:kivy 1.0.9
+
+<AssistantLayout>:
+    orientation: 'vertical'
+    user_text: txt.text
+    GridLayout:
+        cols: 1
+        rows: 2
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.1, 0.2, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            font_size: 18
+            text: "Assistant"
+            size_hint: 0.2, 0.2
+        Label:
+            font_size: 15
+            text: str(root.assistant_text)
+            size_hint: 0.8, 0.8
+
+    GridLayout:
+        cols: 1
+        rows: 4
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            font_size: 15
+            size_hint: 0.8, 0.8
+            text: str(root.user_text)
+        GridLayout:
+            cols: 2
+            rows: 1
+            size_hint: 0.2, 0.2
+            Button:
+                text: "Send"
+                size_hint: 0.2, 0.2
+                width: 0.5
+                on_release: root.send()
+            Button:
+                text: "Speak"
+                size_hint: 0.2, 0.2
+                width: 0.5
+                on_release: root.speak()
+
+        TextInput:
+            id: txt
+            text: root.user_text
+            size_hint: 0.2, 0.2
+            width: 0.5
+        Label:
+            font_size: 18
+            size_hint: 0.2, 0.2
+            text: "Me"
